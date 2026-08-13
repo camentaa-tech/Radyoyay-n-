@@ -1,21 +1,7 @@
-name: 7/24 Radyo Yayini
-
-on:
-  workflow_dispatch:
-
+name: Radio
+on: [workflow_dispatch]
 jobs:
-  stream:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Gerekli Paketleri Kur
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Yayini Baslat
-        run: |
-          while true; do
-            # Dis kaynaklara baglanmadan FFmpeg'in kendi urettigi kesintisiz ses akisi (Asla hata vermez)
-            ffmpeg -re -f lavfi -i "sine=frequency=440:sample_rate=44100" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
-            sleep 5
-          done
+      - run: sudo apt-get install -y ffmpeg && ffmpeg -i "https://icecast.liveatc.net/lhr_twr" -vn -acodec libmp3lame -b:a 96k -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
