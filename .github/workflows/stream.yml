@@ -16,5 +16,6 @@ jobs:
       - name: Canli Yayini Surekli Calistir
         run: |
           while true; do
-            yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" | xargs -I {} ffmpeg -re -i "{}" -vn -acodec libmp3lame -ab 128k -f mp3 http://811126864dj@82.145.63.6:6274/ || sleep 10
+            yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfk4" | xargs -I {} ffmpeg -re -i "{}" -vn -acodec libmp3lame -ab 128k -f mp3 http://82.145.63.6:6274/;
+            sleep 10;
           done
