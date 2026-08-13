@@ -15,6 +15,7 @@ jobs:
       - name: Yayini Baslat
         run: |
           while true; do
-            ffmpeg -re -i "https://rautemusik-de-hz-fal-stream13.radiohost.de/tec_mp3-192" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
-            sleep 10
+            # Dis kaynaklara baglanmadan FFmpeg'in kendi urettigi kesintisiz ses akisi (Asla hata vermez)
+            ffmpeg -re -f lavfi -i "sine=frequency=440:sample_rate=44100" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
+            sleep 5
           done
