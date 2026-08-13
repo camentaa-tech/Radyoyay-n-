@@ -4,4 +4,8 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install -y ffmpeg && ffmpeg -i "https://icecast.liveatc.net/lhr_twr" -vn -acodec libmp3lame -b:a 96k -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
+      - run: |
+          sudo apt-get install -y ffmpeg
+          while true; do
+            ffmpeg -re -i "https://icecast.liveatc.net/lhr_twr" -vn -acodec libmp3lame -b:a 96k -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/" || sleep 5
+          done
