@@ -15,4 +15,4 @@ jobs:
 
       - name: Canli Yayini Baslat
         run: |
-          yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" | xargs -I {} ffmpeg -re -i "{}" -f flv rtmp://82.145.63.6:6274/811126864dj
+          yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" | xargs -I {} ffmpeg -re -i "{}" -vn -acodec libmp3lame -ab 128k -f mp3 http://:811126864dj@82.145.63.6:6274/
