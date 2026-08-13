@@ -10,17 +10,11 @@ jobs:
       - name: Gerekli Paketleri Kur
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg python3-pip
-          pip3 install yt-dlp
+          sudo apt-get install -y ffmpeg
 
       - name: Yayini Baslat
         run: |
           while true; do
-            # YouTube linkinin dogrudan ses adresini alip link.txt dosyasina yaziyoruz
-            yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" > link.txt
-            
-            # Aldigimiz ses adresini FFmpeg ile Caster.fm'e aktariyoruz
-            ffmpeg -re -i "$(cat link.txt)" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
-            
+            ffmpeg -re -i "https://stream.teknivalradio.com:8443/radio" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
             sleep 10
           done
