@@ -15,6 +15,6 @@ jobs:
       - name: Yayini Baslat
         run: |
           while true; do
-            ffmpeg -re -i "https://stream.zeno.fm/f3wvbbqmdg8uv" -vn -acodec libmp3lame -b:a 128k -f mpeg "icecast://source:81112686dj@82.145.63.6:6274/"
+            ffmpeg -re -i "https://stream.zeno.fm/f3wvbbqmdg8uv" -vn -acodec libmp3lame -b:a 128k -f mpeg "icecast://source:81112686dj@82.145.63.6:6274/stream"
             sleep 10
           done
