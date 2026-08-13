@@ -16,7 +16,7 @@ jobs:
       - name: Yayini Baslat
         run: |
           while true; do
-            URL=$(yt-dlp -g "https://www.youtube.com/watch?v=jfKfPfyJRdk")
+            URL=$(yt-dlp -g "https://www.youtube.com/watch?v=5qap5aO4i9A")
             ffmpeg -re -i "$URL" -vn -acodec libmp3lame -ab 128k -f mp3 "icecast://source:81112686dj@82.145.63.6:6274/"
             sleep 10
           done
