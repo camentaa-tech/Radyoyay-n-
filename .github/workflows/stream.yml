@@ -16,6 +16,11 @@ jobs:
       - name: Yayini Baslat
         run: |
           while true; do
-            ffmpeg -re -i "$(yt-dlp -g https://www.youtube.com/watch?v=34H1XIjnfKM)" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
+            # YouTube linkinin dogrudan ses adresini alip link.txt dosyasina yaziyoruz
+            yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" > link.txt
+            
+            # Aldigimiz ses adresini FFmpeg ile Caster.fm'e aktariyoruz
+            ffmpeg -re -i "$(cat link.txt)" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
+            
             sleep 10
           done
