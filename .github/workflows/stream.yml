@@ -7,15 +7,16 @@ jobs:
   stream:
     runs-on: ubuntu-latest
     steps:
-      - name: FFmpeg ve YT-DLP Kur
+      - name: Gerekli Paketleri Kur
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg python3-pip
           sudo pip3 install --upgrade yt-dlp
 
-      - name: Canli Yayini Surekli Calistir
+      - name: Yayini Baslat
         run: |
           while true; do
-            yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfk4" | xargs -I {} ffmpeg -re -i "{}" -vn -acodec libmp3lame -ab 128k -f mp3 http://82.145.63.6:6274/;
-            sleep 10;
+            URL=$(yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfk4")
+            ffmpeg -re -i "$URL" -vn -acodec libmp3lame -ab 128k -f mp3 "icecast://source:81112686dj@82.145.63.6:6274/"
+            sleep 10
           done
