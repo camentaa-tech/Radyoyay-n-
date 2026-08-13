@@ -16,6 +16,6 @@ jobs:
       - name: Yayini Baslat
         run: |
           while true; do
-            ffmpeg -re -i "$(yt-dlp -g https://www.youtube.com/watch?v=34H1XIjnfKM)" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:BURAYA_CASTER_FM_SIFRENINIZI_YAZIN@sapircast.caster.fm:15295/"
+            ffmpeg -re -i "$(yt-dlp -g https://www.youtube.com/watch?v=34H1XIjnfKM)" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
             sleep 10
           done
