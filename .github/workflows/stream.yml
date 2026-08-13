@@ -1,18 +1,1 @@
-name: 7/24 Radyo Yayini
 
-on:
-  workflow_dispatch:
-
-jobs:
-  stream:
-    runs-on: ubuntu-latest
-    steps:
-      - name: FFmpeg ve YT-DLP Kur
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg python3-pip
-          sudo pip3 install --upgrade yt-dlp
-
-      - name: Canli Yayini Baslat
-        run: |
-          yt-dlp -g "https://www.youtube.com/watch?v=34H1XIjnfKM" | xargs -I {} ffmpeg -re -i "{}" -vn -acodec libmp3lame -ab 128k -f mp3 http://:811126864dj@82.145.63.6:6274/
