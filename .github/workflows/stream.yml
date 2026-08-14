@@ -7,6 +7,6 @@ jobs:
       - run: |
           sudo apt-get install -y ffmpeg
           while true; do
-            ffmpeg -re -i "https://icecast.liveatc.net/lhr_twr" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/stream"
+            ffmpeg -re -i "https://stream.zeno.fm/f3wvbbqmdg8uv" -vn -acodec libmp3lame -b:a 96k -content_type audio/mpeg -f icecast "icecast://source:Ruzgar3637@sapircast.caster.fm:15295/"
             sleep 5
           done
